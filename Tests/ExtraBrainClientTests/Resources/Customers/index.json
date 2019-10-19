@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Company A",
+    "has_things_to_invoice": false,
+    "customer_manager": {
+      "id": 210,
+      "full_name": "Emma Blixt"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Company B",
+    "has_things_to_invoice": true,
+    "customer_manager": {
+      "id": 183,
+      "full_name": "Emric M"
+    }
+  }
+]

@@ -10,6 +10,7 @@ public class ExtraBrainClient {
     private let apiClient: APIClient
     
     lazy public var tasks: Tasks = { Tasks(client: self) }()
+    lazy public var customers: Customers = { Customers(client: self) }()
 
     public init(username: String, password: String) {
         self.username = username
@@ -39,17 +40,33 @@ public class ExtraBrainClient {
         let client: ExtraBrainClient
         
         public func find(id taskId: Int, completion: @escaping ExtraBrainClientResultCompletion<Task>) {
-            client.get(path: "/tasks/\(String(describing: taskId))") { result in
-                switch result {
-                case .failure(let error):
+            client.get(path: "/tasks/\(String(describing: taskId))") {
+                Responder<Task>().respond($0, completion: completion)
+            }
+        }
+    }
+    
+    public struct Customers {
+        let client: ExtraBrainClient
+        
+        public func all(completion: @escaping ExtraBrainClientResultCompletion<[Customer]>) {
+            client.get(path: "/customers") {
+                Responder<[Customer]>().respond($0, completion: completion)
+            }
+        }
+    }
+    
+    class Responder<T: Decodable> {
+        func respond(_ result: APIResult<Data?>, completion: @escaping ExtraBrainClientResultCompletion<T>) {
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let response):
+                do {
+                    let task = try response.decode(to: T.self, keyDecodingStrategy: .convertFromSnakeCase).body
+                    completion(.success(task))
+                } catch let error {
                     completion(.failure(error))
-                case .success(let response):
-                    do {
-                        let task = try response.decode(to: Task.self, keyDecodingStrategy: .convertFromSnakeCase).body
-                        completion(.success(task))
-                    } catch let error {
-                        completion(.failure(error))
-                    }
                 }
             }
         }

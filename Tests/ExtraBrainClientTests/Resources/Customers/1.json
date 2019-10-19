@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "Company A",
+  "has_things_to_invoice": false,
+  "customer_manager": {
+    "id": 210,
+    "full_name": "Emma Blixt"
+  }
+}
