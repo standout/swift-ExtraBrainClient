@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "user_id": 63,
+  "duration": 3600,
+  "started_at": null,
+  "created_at": "2019-10-18T14:27:30.325+02:00",
+  "updated_at": "2019-10-18T14:27:36.563+02:00",
+  "day": "2019-10-18",
+  "task_id": null,
+  "project_id": null,
+  "project_title": "",
+  "charging": "product_development",
+  "title": "Dashboardappen",
+  "description": "Dashboardappen",
+  "running": false,
+  "duration_humanized": "1h",
+  "customer_name": null,
+  "money": 0,
+  "hourly_rate": 800
+}

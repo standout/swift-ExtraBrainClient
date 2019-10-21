@@ -11,6 +11,7 @@ public class ExtraBrainClient {
     
     lazy public var tasks: Tasks = { Tasks(client: self) }()
     lazy public var customers: Customers = { Customers(client: self) }()
+    lazy public var timeEntries: TimeEntries = { TimeEntries(client: self) }()
 
     public init(username: String, password: String) {
         self.username = username
@@ -36,6 +37,13 @@ public class ExtraBrainClient {
         apiClient.perform(buildRequest(method: .get, path: path), completion)
     }
     
+    func post(path: String, data: Data? = nil, completion: @escaping APIClient.APIClientCompletion) {
+        let request = buildRequest(method: .post, path: path)
+        request.body = data
+
+        apiClient.perform(request, completion)
+    }
+    
     public struct Tasks {
         let client: ExtraBrainClient
         
@@ -52,6 +60,27 @@ public class ExtraBrainClient {
         public func all(completion: @escaping ExtraBrainClientResultCompletion<[Customer]>) {
             client.get(path: "/customers") {
                 Responder<[Customer]>().respond($0, completion: completion)
+            }
+        }
+    }
+    
+    public struct TimeEntries {
+        let client: ExtraBrainClient
+        
+        struct TimeEntryRequestWrapper: Encodable {
+            let timeEntry: TimeEntry
+        }
+        
+        public func create(_ timeEntry: TimeEntry, completion: @escaping ExtraBrainClientResultCompletion<TimeEntry>) {
+            let coder = JSONEncoder()
+            coder.keyEncodingStrategy = .convertToSnakeCase
+            
+            let requestWrapper = TimeEntryRequestWrapper(timeEntry: timeEntry)
+            
+            let data = try! coder.encode(requestWrapper)
+
+            client.post(path: "/time_entries", data: data) {
+                Responder<TimeEntry>().respond($0, completion: completion)
             }
         }
     }
