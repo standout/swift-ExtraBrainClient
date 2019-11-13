@@ -10,4 +10,8 @@ public struct TimeEntry: Codable, Identifiable {
         self.duration = duration
         self.description = description
     }
+
+    public struct Summary: Decodable {
+        public let duration: TimeInterval
+    }
 }
