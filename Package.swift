@@ -17,7 +17,7 @@ let package = Package(
             from: "2.0.0"),
         .package(
             url: "https://github.com/alex-ross/swift-EasyMode.git",
-            from: "1.1.0")
+            from: "1.3.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

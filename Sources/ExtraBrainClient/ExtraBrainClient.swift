@@ -12,6 +12,7 @@ public class ExtraBrainClient {
     public lazy var tasks: TasksController = { TasksController(client: self) }()
     public lazy var customers: CustomersController = { CustomersController(client: self) }()
     public lazy var timeEntries: TimeEntriesController = { TimeEntriesController(client: self) }()
+    public lazy var approvedDays: ApprovedDaysController = { ApprovedDaysController(client: self) }()
 
     public init(username: String,
                 password: String,

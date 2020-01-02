@@ -1,8 +1,8 @@
-import XCTest
 @testable import ExtraBrainClient
+import XCTest
 
 final class CustomersControllerTests: XCTestCase {
-    func tesCustomersAll_throughClient() throws {
+    func testCustomersAll_throughClient() throws {
         let expectation = self.expectation(description: "response")
 
         let session = URLSessionMock()

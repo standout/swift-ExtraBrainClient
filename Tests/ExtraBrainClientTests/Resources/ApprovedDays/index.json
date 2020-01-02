@@ -1,0 +1,16 @@
+[{
+    "id": 1,
+    "day": "2019-12-27",
+    "user_id": 1,
+    "status": "waiting_for_approval"
+}, {
+    "id": 2,
+    "day": "2019-12-29",
+    "user_id": 1,
+    "status": "waiting_for_approval"
+}, {
+    "id": 3,
+    "day": "2019-12-29",
+    "user_id": 1,
+    "status": "some new unsupported status"
+}]
