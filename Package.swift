@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/alex-ross/swift-APIClient.git",
-            from: "1.0.1"),
+            from: "2.0.0"),
         .package(
             url: "https://github.com/alex-ross/swift-EasyMode.git",
             from: "1.1.0")

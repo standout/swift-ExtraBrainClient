@@ -1,5 +1,5 @@
-import Foundation
 import EasyMode
+import Foundation
 
 extension ExtraBrainClient {
     @available(*, deprecated, renamed: "TimeEntriesController")
@@ -30,7 +30,6 @@ extension ExtraBrainClient {
                             taskIds: [Int]? = nil,
                             userIds: [Int]? = nil,
                             completion: @escaping ExtraBrainClientResultCompletion<TimeEntry.Summary>) {
-
             var query = [URLQueryItem]()
 
             if let fromDay = fromDay {
