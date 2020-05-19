@@ -13,5 +13,6 @@ public struct TimeEntry: Codable, Identifiable {
 
     public struct Summary: Decodable {
         public let duration: TimeInterval
+        public let billablePayPerHour: Money
     }
 }
